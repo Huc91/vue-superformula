@@ -36,7 +36,7 @@ export default {
                   A  = 1,
                   B  = 1,
                   C  = 1,
-                  M  = 4;
+                  M  = 5;
             function superShape( angle ){
 
                 const T1 = Math.pow( ( Math.abs( Math.cos( M * angle / 4 ) / A ) ), N2 );
@@ -48,7 +48,7 @@ export default {
             function createPoints(){
 
                 let points = [];
-                for ( let angle = 0; angle < 2 * Math.PI; angle += 0.1 ){
+                for ( let angle = 0; angle < 2 * Math.PI ; angle += 0.01 ){
                     
                     const R = superShape( angle );
 
