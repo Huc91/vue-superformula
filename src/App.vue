@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SuperFormula/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SuperFormula from './components/SuperFormula.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    SuperFormula
   }
 }
 </script>
