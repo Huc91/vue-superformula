@@ -35,10 +35,13 @@ export default {
                   N3 = 1,
                   A  = 1,
                   B  = 1,
-                  C  = 1;
+                  C  = 1,
+                  M  = 4;
             function superShape( angle ){
 
-                let r = 1;
+                const T1 = Math.pow( ( Math.abs( Math.cos( M * angle / 4 ) / A ) ), N2 );
+                const T2 = Math.pow( ( Math.abs( Math.sin( M * angle / 4 ) / B ) ), N3 );
+                let r = Math.pow( ( T1 + T2 ), ( 1 / N1 ) );
                 return r;
               
             }
@@ -46,13 +49,28 @@ export default {
 
                 let points = [];
                 for ( let angle = 0; angle < 2 * Math.PI; angle += 0.1 ){
-
+                    
                     const R = superShape( angle );
-                    const POINT = {
-                        x: R * Math.cos( angle ) * 100 + 150,
-                        y: R * Math.sin( angle ) * 100 + 150
-                    };
-                    points.push( POINT );
+
+                    if ( Math.abs( R ) === 0 ){
+
+                        const POINT = {
+                            x: 0,
+                            y: 0
+                        };
+                        points.push( POINT );
+
+                    } else {
+
+                        const MY_R = 1 / R;
+                        const POINT = {
+                          x: MY_R * Math.cos( angle ) * 100 + 150,
+                          y: MY_R * Math.sin( angle ) * 100 + 150
+                        };
+                        points.push( POINT );
+
+                    }
+                    
                   
                 }
                 return points; 
@@ -63,11 +81,14 @@ export default {
 
               const POINTS = points;
               const MAP_POINTS = POINTS.map( point => {
+
                 const STR_POINT = `${point.x},${point.y}`;
                 return STR_POINT;
+
               })
               console.log( MAP_POINTS.join(' ') )
               return MAP_POINTS.join(' ');
+
             }
             return convertPoints( createPoints() );
         };
