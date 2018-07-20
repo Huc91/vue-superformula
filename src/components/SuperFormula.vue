@@ -2,7 +2,11 @@
     <div class="super-formula-container">
         <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
 
-            <polygon :points="points" />
+            <polygon 
+            :points="points"
+            fill="none"
+            stroke="black" 
+            />
 
         </svg>
     </div>
@@ -45,8 +49,8 @@ export default {
 
                     const R = superShape( angle );
                     const POINT = {
-                        x: R * Math.cos( angle ) * 100 + 100,
-                        y: R * Math.sin( angle ) * 100 + 100
+                        x: R * Math.cos( angle ) * 100 + 150,
+                        y: R * Math.sin( angle ) * 100 + 150
                     };
                     points.push( POINT );
                   
