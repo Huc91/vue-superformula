@@ -1,3 +1,3 @@
 # Superformula in Vue
 An implementation of the superformula algorithm in modern javascript.
-Only with Vue.js and ES6
+Made with love only with the Vue.js framework, ES6 and SVG, no other libraries, no plugin.
