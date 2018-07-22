@@ -4,3 +4,5 @@ Made with love only with the `Vue.js` framework, `ES6` and `SVG`, no other libra
 
 ## Project website
 Check out [a live example](https://huc91.github.io/vue-superformula/), *desktop only* 
+
+![sample](https://media.giphy.com/media/2skxnNs73mOM682uhH/giphy.gif)
