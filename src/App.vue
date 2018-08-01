@@ -74,4 +74,7 @@ h1{
 h2{
   margin-top: 16px;
 }
+.highlight{
+  background-color: #fff;
+}
 </style>
