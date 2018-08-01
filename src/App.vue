@@ -5,7 +5,7 @@
     @click="addShape()"
   >
     <h1>Superformula in Vue.js</h1>
-    <h2>Luca Ucciero</h2>
+    <h2 class="highlight" >Luca Ucciero</h2>
     <SuperFormula
       :mouseX="xPos"
       :mouseY="yPos"
