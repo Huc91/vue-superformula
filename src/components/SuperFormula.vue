@@ -72,7 +72,6 @@ function superFormula(x = 1, y = 1, shapeCount = 1){
         return STR_POINT;
 
       })
-      console.log( MAP_POINTS.join(' ') )
       return MAP_POINTS.join(' ');
 
     }
