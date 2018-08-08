@@ -88,9 +88,19 @@ export default {
     },
     computed:{
 
-      points(){
+      pointsFromMouse(){
         return superFormula( ( this.mouseX / 150 ), ( 150 / this.mouseY ), this.shapeCount );
-      }
+      },
+      pointsFromGyro(){
+        return superFormula( ( this.deviceOrientation.gamma / 6 ), ( this.deviceOrientation.beta / 6 ), this.shapeCount );
+      },
+      points(){
+          if (this.deviceOrientation.hasOrientation)
+            return this.pointsFromGyro;
+          else
+            return this.pointsFromMouse;
+      },
+
     },
     props: {
       mouseX: {
@@ -101,6 +111,10 @@ export default {
         type: Number,
         default: 0,
       },
+      deviceOrientation: {
+          type: Object,
+          default: () => {},
+      },
       shapeCount: {
         type: Number,
         default: 1,
@@ -108,7 +122,7 @@ export default {
     },
     mounted(){
 
-        this.points = superFormula();
+       // this.points = superFormula();
 
     }
 }

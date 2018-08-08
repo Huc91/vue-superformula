@@ -6,10 +6,10 @@
   >
     <h1>Superformula in Vue.js</h1>
     <h2 class="highlight" >Luca Ucciero</h2>
-    <span>{{ hasDeviceOrientation }}</span>
     <SuperFormula
       :mouseX="xPos"
       :mouseY="yPos"
+      :deviceOrientation="deviceOrientation"
       :shapeCount="shapeCount"
     />
   </div>
@@ -29,7 +29,12 @@ export default {
       xPos: 0,
       yPos: 0,
       shapeCount: 1,
-      hasDeviceOrientation: false,
+      deviceOrientation: {
+          hasOrientation: false,
+          alpha: null,
+          beta: null,
+          gamma: null,
+      }
     }
   },
   methods: {
@@ -46,7 +51,10 @@ export default {
       }
     },
     getDeviceOrientation(ev){
-        console.log(ev);
+        this.deviceOrientation["hasOrientation"] = true;
+        this.deviceOrientation["alpha"] = ev.alpha;
+        this.deviceOrientation["beta"] = ev.beta;
+        this.deviceOrientation["gamma"] = ev.gamma;
     }
   },
   mounted(){
