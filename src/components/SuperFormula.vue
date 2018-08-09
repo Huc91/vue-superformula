@@ -14,7 +14,7 @@
 
 <script>
 /* eslint-disable */
-function superFormula(x = 1, y = 1, shapeCount = 1){
+function superFormula(x = 1, y = 1, shapeCount = 1, size){
 
     const N1 = y,
           N2 = y,
@@ -50,8 +50,8 @@ function superFormula(x = 1, y = 1, shapeCount = 1){
 
                 const MY_R = 1 / R;
                 const POINT = {
-                  x: MY_R * Math.cos( angle ) * 50 + 100,
-                  y: MY_R * Math.sin( angle ) * 50 + 100
+                  x: MY_R * Math.cos( angle ) * size.radius + size.offset,
+                  y: MY_R * Math.sin( angle ) * size.radius + size.offset
                 };
                 points.push( POINT );
 
@@ -89,10 +89,10 @@ export default {
     computed:{
 
       pointsFromMouse(){
-        return superFormula( ( this.mouseX / 150 ), ( 150 / this.mouseY ), this.shapeCount );
+        return superFormula( ( this.mouseX / 150 ), ( 150 / this.mouseY ), this.shapeCount, this.size );
       },
       pointsFromGyro(){
-        return superFormula( ( this.deviceOrientation.gamma / 6 ), ( this.deviceOrientation.beta / 6 ), this.shapeCount );
+        return superFormula( ( this.deviceOrientation.gamma / 6 ), ( this.deviceOrientation.beta / 6 ), this.shapeCount, this.size );
       },
       points(){
           if (this.deviceOrientation.hasOrientation)
@@ -118,11 +118,13 @@ export default {
       shapeCount: {
         type: Number,
         default: 1,
+      },
+      size: {
+        type: Object,
+        default: { radius: 50, offset: 100 },
       }
     },
-    mounted(){
-
-       // this.points = superFormula();
+    mounted(){ 
 
     }
 }

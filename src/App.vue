@@ -11,6 +11,7 @@
       :mouseY="yPos"
       :deviceOrientation="deviceOrientation"
       :shapeCount="shapeCount"
+      :size="size"
     />
   </div>
 </template>
@@ -34,8 +35,30 @@ export default {
           alpha: null,
           beta: null,
           gamma: null,
-      }
+      },
+      deviceWidth: null,
     }
+  },
+  computed: {
+      size(){
+
+          if(this.deviceWidth >= 1024) {
+
+              return { 
+                  radius: 50, 
+                  offset: 100 
+              }
+
+          } else {
+
+              return { 
+                  radius: this.deviceWidth / 3, 
+                  offset: ( this.deviceWidth / 2 ) + ( this.deviceWidth / 3 ) / 4
+              };
+
+          }
+
+      }
   },
   methods: {
     onMouseMove( ev ){
@@ -59,6 +82,7 @@ export default {
   },
   mounted(){
       window.addEventListener('deviceorientation', this.getDeviceOrientation);
+      this.deviceWidth = document.documentElement.clientWidth;
   }
 }
 </script>
